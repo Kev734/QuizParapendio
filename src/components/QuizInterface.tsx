@@ -75,7 +75,7 @@ const QuizInterface = () => {
 
   const restartQuiz = () => {
     const shuffledQuestions = [...questions].sort(() => Math.random() - 0.5);
-    setSelectedQuestions(shuffledQuestions.slice(0, 5));
+    setSelectedQuestions(shuffledQuestions.slice(0, 10));
     setCurrentQuestionIndex(0);
     setUserAnswers({});
     setShowResults(false);
