@@ -1,0 +1,81 @@
+import re
+import json
+
+# File paths
+questions_file = "Domande2.txt"
+answers_file = "Risposte.txt"
+output_file = "./src/components/data/quiz_questions.json"
+
+# RegEx patterns
+section_pattern = r'^\d+ - (.+)$'
+question_pattern = r'^(\d{4}) (.+)$'
+answer_pattern = r'^[A.C].'
+
+# Parse answers into a dictionary
+answers_mapping = {}
+with open(answers_file, "r", encoding="utf-8") as f:
+    for line in f:
+        for pair in line.split():
+            question_id, correct_answer = pair.split("-")
+            answers_mapping[int(question_id)] = int(correct_answer) - 1  # Convert to 0-based indexing
+
+# Parse questions
+questions = []
+current_section = None
+current_question = None
+options = []
+text_buffer = []
+
+with open(questions_file, "r", encoding="windows-1252") as f:
+    for line in f:
+        line = line.strip()
+        if not line:
+            continue  # Skip empty lines
+
+        # Match section
+        section_match = re.match(section_pattern, line)
+        if section_match:
+            current_section = section_match.group(1)
+            continue
+
+        # Match question
+        question_match = re.match(question_pattern, line)
+        if question_match:
+            # Finalize the previous question
+            if current_question:
+                questions.append({
+                    "id": current_question["id"],
+                    "section": current_section,
+                    "text": " ".join(text_buffer).strip(),
+                    "options": options,
+                    "correctAnswer": answers_mapping.get(current_question["id"], None)
+                })
+
+            # Start a new question
+            current_question = {"id": int(question_match.group(1))}
+            text_buffer = [question_match.group(2)]
+            options = []  # Reset options
+            continue
+
+        # Match answers
+        if re.match(answer_pattern, line):
+            options.append(line)
+        else:
+            # Add to question text buffer
+            text_buffer.append(line)
+
+    # Finalize the last question
+    if current_question:
+        questions.append({
+            "id": current_question["id"],
+            "section": current_section,
+            "text": " ".join(text_buffer).strip(),
+            "options": options,
+            "correctAnswer": answers_mapping.get(current_question["id"], None)
+        })
+
+# Save to JSON
+with open(output_file, "w", encoding="utf-8") as f:
+    json.dump(questions, f, ensure_ascii=False, indent=2)
+
+print(f"File JSON generato: {output_file}")
