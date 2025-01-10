@@ -19,7 +19,7 @@ const QuizInterface = () => {
 
   // Seleziona 30 domande casuali all'inizio
   useEffect(() => {
-    const shuffledQuestions = [...questions].sort(() => Math.random() - 0.10);
+    const shuffledQuestions = [...questions].sort(() => Math.random() - 0.5);
     setSelectedQuestions(shuffledQuestions.slice(0, 10));
   }, []);
 
