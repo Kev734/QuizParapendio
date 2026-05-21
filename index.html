@@ -7,11 +7,36 @@
     <title>QuizParapendio</title>
     <script type="module" crossorigin src="/QuizParapendio/assets/index-BpUT0bnN.js"></script>
     <link rel="stylesheet" crossorigin href="/QuizParapendio/assets/index-DrEgDjkL.css">
+    <style>
+      /* Forza l'intera pagina a impilare gli elementi dall'alto verso il basso */
+      body {
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: center !important;
+        min-height: 100vh;
+        margin: 0;
+      }
+      /* Posiziona la firma esattamente sotto il contenitore di React */
+      .credits-fabio {
+        text-align: center;
+        margin-top: 15px; 
+        padding: 5px;
+        color: #555;
+        font-family: sans-serif;
+        font-size: 14px;
+        width: 100%;
+        order: 2; /* Dice al browser di metterlo rigorosamente DOPO il quiz */
+      }
+      #root {
+        order: 1; /* Il quiz viene prima */
+      }
+    </style>
   </head>
   <body>
     <div id="root"></div>
-
-    <div style="position: fixed; bottom: 10px; left: 50%; transform: translateX(-50%); width: 100%; text-align: center; color: #555; font-family: sans-serif; font-size: 14px; z-index: 9999; background: rgba(255,255,255,0.8); padding: 5px 0;">
+    
+    <div class="credits-fabio">
       Quiz Parapendio By Fabio Di Gaetano 🪂
     </div>
   </body>
