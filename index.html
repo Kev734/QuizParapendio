@@ -7,12 +7,24 @@
     <title>QuizParapendio</title>
     <script type="module" crossorigin src="/QuizParapendio/assets/index-BpUT0bnN.js"></script>
     <link rel="stylesheet" crossorigin href="/QuizParapendio/assets/index-DrEgDjkL.css">
+    
+    <style>
+      /* Usiamo il foglio di stile per agganciare la firma alla banda grigia */
+      #root::after {
+        content: "Quiz Parapendio By Fabio Di Gaetano 🪂";
+        display: block;
+        text-align: center;
+        font-family: sans-serif;
+        font-size: 13px;
+        color: #666;
+        padding-top: 15px;
+        padding-bottom: 10px;
+        background-color: #f3f4f6; /* Esattamente lo stesso grigio della banda dei tasti */
+        border-radius: 0 0 8px 8px; /* Arrotonda gli angoli in fondo alla scheda */
+      }
+    </style>
   </head>
   <body>
     <div id="root"></div>
-    
-    <div style="text-align: center; margin-top: 30px; margin-bottom: 30px; color: #555; font-family: sans-serif; font-size: 14px; width: 100%;">
-      Quiz Parapendio By Fabio Di Gaetano 🪂
-    </div>
   </body>
 </html>
