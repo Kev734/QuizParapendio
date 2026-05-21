@@ -8,36 +8,26 @@
     <script type="module" crossorigin src="/QuizParapendio/assets/index-BpUT0bnN.js"></script>
     <link rel="stylesheet" crossorigin href="/QuizParapendio/assets/index-DrEgDjkL.css">
     <style>
-      /* Contenitore principale del sito */
+      /* Forza la pagina a stare centrata senza allungarsi nel vuoto */
       body {
-        display: flex !important;
-        flex-direction: column !important;
-        justify-content: center !important;
-        align-items: center !important;
-        min-height: 100vh;
         margin: 0;
-        position: relative;
+        padding: 0;
+        min-height: 100vh;
       }
 
-      /* Forza il quiz a fare da base per il posizionamento della firma */
-      #root {
-        position: relative;
-        padding-bottom: 0px !important; 
-      }
-
-      /* LA FIRMA: Posizionata millimetricamente sotto i tasti, sul fondo grigio */
+      /* LA SOLUZIONE DEFINITIVA: Sovrappone la firma alla banda grigia */
       .credits-fabio {
-        position: absolute;
-        bottom: 12px; /* Regola l'altezza all'interno della banda grigia */
+        position: fixed;
+        bottom: 40px; /* Alza il testo per metterlo nello spazio grigio tra i tasti */
         left: 50%;
         transform: translateX(-50%);
         text-align: center;
-        color: #555;
+        color: #444; /* Un grigio leggermente più scuro per farlo leggere sul grigio chiaro */
         font-family: sans-serif;
         font-size: 13px;
-        z-index: 99;
-        pointer-events: none; /* Evita che dia fastidio se si clicca vicino ai tasti */
-        width: 100%;
+        font-weight: bold;
+        z-index: 9999; /* Lo tiene sopra a qualsiasi elemento del quiz */
+        pointer-events: none; /* Evita che blocchi il click sui tasti */
         white-space: nowrap;
       }
     </style>
