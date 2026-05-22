@@ -118,6 +118,7 @@ const QuizInterface = () => {
   return (
     <div className="quiz-container">
       <div className="quiz-header">
+        <p className="section-title">SIMULAZIONE ESAME PARAPENDIO</p>
         <p>Domanda {currentQuestionIndex + 1}/{selectedQuestions.length}</p>
         <p className="section-title">{currentQuestion.section}</p>
       </div>
@@ -147,6 +148,22 @@ const QuizInterface = () => {
         >
           {currentQuestionIndex === selectedQuestions.length - 1 ? "Termina" : "Successiva"}
         </button>
+      </div>
+
+{/* IL TUO CREDIT DENTRO LA GRAFICA - VERSIONE MOBILE-PROOF */}
+      <div style={{ 
+        textAlign: 'right', 
+        fontSize: '12px', 
+        marginTop: '15px', 
+        color: '#333333',       // Grigio scuro deciso, così non si mimetizza
+        opacity: 0.7, 
+        fontStyle: 'italic',
+        paddingRight: '15px',
+        paddingBottom: '10px',  // Un po' di margine dal bordo inferiore
+        display: 'block',       // Forza il blocco visibile
+        width: 'auto'
+      }}>
+        QuizParapendio <span style={{ fontStyle: 'normal' }}>🪂</span> By Fabio Di Gaetano
       </div>
     </div>
   );

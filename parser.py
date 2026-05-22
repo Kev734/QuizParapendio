@@ -26,7 +26,7 @@ current_question = None
 options = []
 text_buffer = []
 
-with open(questions_file, "r", encoding="windows-1252") as f:
+with open(questions_file, "r", encoding="utf-8") as f:
     for line in f:
         line = line.strip()
         print(f"Leggo la riga: {line}")  # Debug log
